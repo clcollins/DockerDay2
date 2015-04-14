@@ -7,6 +7,8 @@ Docker Day II - April 15, 2015
 * Chris Collins
 * <christopher.collins@duke.edu>
 
+https://github.com/clcollins/DockerDay2
+
 ---
 
 ## Think Outside the Box, er, Container
