@@ -5,7 +5,7 @@ Docker Containers: Not Just Servers in a Box!
 Docker Day II - April 15, 2015
 
 * Chris Collins
-* \<christopher.collins@duke.edu\>
+* <christopher.collins@duke.edu>
 
 ---
 
@@ -36,7 +36,7 @@ Super Docker Wizards (10th Level or above) replicate *services* instead
 Think Outside the Box, er, Container
 ====================================
 
-Super Docker Wizards (10th Level or above) replicate __services__
+Super Docker Wizards (10th Level or above) replicate *services*
 
 (...with linked containers)
 
@@ -92,7 +92,7 @@ Advanced Docker Wizardry (Earn Your Docker-ate Degree)
 Advanced Docker Wizardry (DKRWIZ 301)
 =======================
 
-__Docker Container as a Binary__
+## Docker Container as a Binary ##
 
 Basic concept: Small, Single-purpose Docker container used to accomplish one task on linked containers
 

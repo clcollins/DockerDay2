@@ -6,4 +6,4 @@ if [[ ! $(which mdp) ]] ; then
   exit 1
 fi
 
-exec mdp ./dd.md
+exec mdp ./README.md
