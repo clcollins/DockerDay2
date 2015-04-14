@@ -837,6 +837,10 @@ More with Privileged Containers:
 * https://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/
 * https://developerblog.redhat.com/2014/11/06/introducing-a-super-privileged-container-concept/
 
+Awesome Wizard Ascii Art:
+
+* http://ascii.co.uk/art/wizard
+
 ---
 
     ( Docker, Docker,            
