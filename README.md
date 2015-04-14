@@ -668,8 +668,9 @@ Docker *Inside* Docker
     ENV TERM=xterm
     ENV DEBIAN_FRONTEND noninteractive
     ENV PKGS git docker curl apt-transport-https ca-certificates curl lxc iptables
+    ENV REPO <url_to_devs_code>
+    ENV DOCKERFILE <url_to_sub-dockerfile>
     
-    ADD . /srv
     RUN apt-get update -qq && apt-get install -qqy $PKGS \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
@@ -685,6 +686,9 @@ Docker *Inside* Docker
     
     RUN echo -e '\n\
     #!/bin/bash\n\
+    git clone $DOCKERFILE /srv
+    git archive --format tar --remote $REPO | tar xz -C /srv --strip-components=1
+    cd /srv
     docker build -t my_image .\n\
     docker save myimage > /tmp/myimage.tar\n\
     ' >> /build_it.sh
