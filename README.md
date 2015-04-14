@@ -9,22 +9,21 @@ Docker Day II - April 15, 2015
 
 ---
 
-Think Outside the Box, er, Container
-====================================
+## Think Outside the Box, er, Container
 
-Majority of Docker use by sysadmins: replicate servers
+Majority of Docker use by sysadmins (at least at first): 
+
+Replicating Servers inside of a Container
 
 ---
 
-Think Outside the Box, er, Container
-====================================
+## Think Outside the Box, er, Container
 
 Super Docker Wizards (10th Level or above) replicate *services* instead
 
 ---
 
-Think Outside the Box, er, Container
-====================================
+## Think Outside the Box, er, Container
 
 Super Docker Wizards (10th Level or above) replicate *services* instead
 
@@ -33,10 +32,9 @@ Super Docker Wizards (10th Level or above) replicate *services* instead
 
 ---
 
-Think Outside the Box, er, Container
-====================================
+## Think Outside the Box, er, Container
 
-Super Docker Wizards (10th Level or above) replicate *services*
+Super Docker Wizards (10th Level or above) replicate *services* instead
 
 (...with linked containers)
 
@@ -44,35 +42,37 @@ Super Docker Wizards (10th Level or above) replicate *services*
 
 ---
 
-Think Outside the Box, er, Container
-====================================
+## Think Outside the Box, er, Container
 
 Developers, I think, use Docker in a similar manner:
 
 ---
 
-Think Outside the Box, er, Container
-====================================
+## Think Outside the Box, er, Container
 
 Developers, I think, use Docker in a similar manner
 
-Ex: Webserver + Language packages for easy testing
+*Example:*
+
+Web server + Language packages for easy testing
 
 ---
 
-Think Outside the Box, er, Container
-====================================
+## Think Outside the Box, er, Container
 
 Developers, I think, use Docker in a similar manner
 
-Ex: Webserver + Language packages for easy testing
+*Example:*
+
+Web server + Language packages for easy testing
 
 (...but it's still a server)
 
 ---
 
-Advanced Docker Wizardry (Earn Your Docker-ate Degree)
-========================
+## Advanced Docker Wizardry
+
+(Earn Your Docker-ate Degree)
 
     (Abara-ka-
       -Dockera!)
@@ -89,35 +89,53 @@ Advanced Docker Wizardry (Earn Your Docker-ate Degree)
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 301)
-=======================
+## Advanced Docker Wizardry
 
-__Docker Container as a Binary__
+(Earn Your Docker-ate Degree)
 
-Basic concept: Small, Single-purpose Docker container used to accomplish one task on linked containers
-
----
-
-Advanced Docker Wizardry (DKRWIZ 301)
-=======================
-
-__Docker Container as a Binary__
-
-Examples:
-
-* Backups
-* Migrations
-* Monitoring
-* Maintenance
+Docker containers can be used in other ways.
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 301)
-=======================
+## Advanced Docker Wizardry
+
+(Earn Your Docker-ate Degree)
+
+Docker containers can be used in other ways.
+
+*Tangential to, or even unrelated to Servers and Services*
+
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 301)
 
 __Docker Container as a Binary__
 
-Consider this:
+*Basic concept:*
+
+Small, Single-purpose Docker container used to accomplish one task on linked containers
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 301)
+
+__Docker Container as a Binary__
+
+*Examples:*
+
+1. Backups
+2. Migrations
+3. Monitoring
+4. Maintenance
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 301)
+
+__Docker Container as a Binary__
+
+*Consider this:
 
     FROM centos:centos7
     MAINTAINER Chris Collins <collins.christopher@gmail.com>
@@ -137,27 +155,25 @@ Consider this:
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 301)
-=======================
+## Advanced Docker Wizardry (DKRWIZ 301)
 
 __Docker Container as a Binary__
 
-Run with: 
+*Run with:* 
 
     docker run --link datbase:database -v /srv/backups:/backups --rm -it do_backups
 
-* Dumps a mysql backup to /srv/backups on the host
-* Can be run linked to dozens, hundreds of MySQL containers
-* Removes the need for cron, backup scripts, mounted volumes, etc from MySQL container
+1. dumps a mysql backup to /srv/backups on the host
+2. can be run linked to dozens, hundreds of MySQL containers
+3. removes the need for cron, backup scripts, mounted volumes, etc from MySQL container
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 301)
-=======================
+## Advanced Docker Wizardry (DKRWIZ 301)
 
 __Docker Container as a Binary__
 
-Consider this:
+*Consider this:*
 
     FROM centos:centos7
     MAINTAINER Chris Collins <collins.christopher@gmail.com>
@@ -178,35 +194,35 @@ Consider this:
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 301)
-=======================
+## Advanced Docker Wizardry (DKRWIZ 301)
 
 __Docker Container as a Binary__
 
-Run with:
+*Run with:*
 
-    docker run --volumes-from webserver --rm -it logrotate
+    docker run --volumes-from web --rm -it logrotate
 
-* Connects to "webserver"; rotates all logs
-* As before, is generic; can run on any linked container
-* Removes the need for cron, logrotate on any linked containers
+1. connects to "web"; rotates all logs
+2. as before, is generic; can run on any linked container
+3. removes the need for cron, logrotate on any linked containers
+
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 302)
-========================
+## Advanced Docker Wizardry (DKRWIZ 302)
 
 __Helper Containers__
 
-Basic Concept: Reduce complexity of Server (or Service) containers by pre-configuring them!
+*Basic concept:*
+
+Reduce complexity of Server (or Service) containers by pre-configuring them!
 
 ---
-Advanced Docker Wizardry (DKRWIZ 302)
-========================
+## Advanced Docker Wizardry (DKRWIZ 302)
 
 __Helper Containers__
 
-Consider this:
+*Consider this:*
 
     FROM centos:centos7
     MAINTAINER Chris Collins <collins.christopher@gmail.com>
@@ -215,28 +231,34 @@ Consider this:
     EXPOSE 3306
     ENTRYPOINT ["/usr/bin/mysqld_safe"]
 
-Question: What would happen if you ran this container?
+A super-simple MySQL container.  Easy to maintain.  Single job.
+
+*Question:*
+
+What would happen if you ran this container?
 
 ---
 
 
-Advanced Docker Wizardry (DKRWIZ 302)
-========================
+## Advanced Docker Wizardry (DKRWIZ 302)
 
 __Helper Containers__
 
-Answer:  Nothing.  Nada.  *Zilch.*
+*Answer:*
+
+Nothing.  Nada.  *Zilch.*
 
 MySQL is not configured, no users, no initialized databases.  It runs, and dies.
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 302)
-========================
+## Advanced Docker Wizardry (DKRWIZ 302)
 
 __Helper Containers__
 
-Answer:  Nothing.  Nada.  *Zilch.*
+*Answer:*
+
+Nothing.  Nada.  *Zilch.*
 
 MySQL is not configured, no users, no initialized databases.  It runs, and dies.
 
@@ -244,8 +266,7 @@ MySQL is not configured, no users, no initialized databases.  It runs, and dies.
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 302)
-========================
+## Advanced Docker Wizardry (DKRWIZ 302)
 
 __Helper Containers__
 
@@ -276,77 +297,103 @@ But link a data container and run a helper container first (and just once!):
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 302)
-========================
+## Advanced Docker Wizardry (DKRWIZ 302)
 
 __Helper Containers__
 
-__NEW ANSWER:__ Fully functioning MySQL database container - 
+*New answer:*
 
-* lightweight
-* easy to maintain
-* instant startup
-* no extra files or pre-configuration
-* no need for "has this been done yet" checks
-* no complicated bash startup scripts, etc.
-* can be started, restarted, built, rebuilt
+Fully functioning MySQL database container 
 
----
-
-Advanced Docker Wizardry (DKRWIZ 401)
-========================
-
-__Multi-run Images__
-
-Basic Concept:  Build an image twice - once to configure, and once to finalize
+1. lightweight
+2. easy to maintain
+3. instant startup
+4. no extra files or pre-configuration
+5. no need for "has this been done yet" checks
+6. no complicated bash startup scripts, etc.
+7. can be started, restarted, built, rebuilt
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 401)
-========================
+## Advanced Docker Wizardry (DKRWIZ 401)
 
 __Multi-run Images__
 
-Real World (gasp!) example:  Failover authoratitive DNS server in a Docker container
+*Basic concept:*
 
-* Requires up-to-date named.conf
-* named.conf generated by ruby script that queries DNS servers
-* Updates take 15+ minutes, so use as a "failover" not so helpful
+Build an image twice - once to configure, and once to finalize
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 401)
-========================
+## Advanced Docker Wizardry (DKRWIZ 401)
 
 __Multi-run Images__
 
-Solution:  Build the Docker image every 4 hours
+*Real World (gasp!) example:*
 
-New Problem:  Build server doesn't have Ruby version/gems required to run named gen. script 
+Fail-over DNS server in a Docker container
+
+1. requires up-to-date named.conf
+2. named.conf generated by ruby script that queries DNS servers
+3. updates take 15+ minutes, so use as a rapid fail-over not so helpful
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 401)
-========================
+## Advanced Docker Wizardry (DKRWIZ 401)
 
 __Multi-run Images__
 
-Solution:  Build the Docker image every 4 hours
+*Solution:*
 
-New Problem:  Build server doesn't have Ruby version/gems required to run script 
+Build the Docker image every 4 hours
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 401)
+
+__Multi-run Images__
+
+*Solution:*
+
+Build the Docker image every 4 hours
+
+*New Problem:*
+
+Build server doesn't have Ruby version/gems required to run named.conf gen. script 
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 401)
+
+__Multi-run Images__
+
+*Solution:*
+
+Build the Docker image every 4 hours
+
+*New Problem:*
+
+Build server doesn't have Ruby version/gems required to run named.conf gen. script 
 
 (...and I don't want it to)
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 401)
-========================
+## Advanced Docker Wizardry (DKRWIZ 401)
 
 __Multi-run Images__
 
-New Solution:  Build the Docker image every 4 hours & let if configure ITSELF
+*New Solution:*
 
-Consider this:
+Build the Docker image every 4 hours & let if configure *ITSELF*
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 401)
+
+__Multi-run Images__
+
+*Consider this:*
 
     FROM centos:7
     MAINTAINER Drew Stinnett <drews@duke.edu>
@@ -374,17 +421,16 @@ Consider this:
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 401)
-========================
+## Advanced Docker Wizardry (DKRWIZ 401)
 
 __Multi-run Images__
 
-Build the image then run with:
+*Build the image then run with:*
 
     docker run -v $(pwd):/srv -it dns-auth /srv/generate_named.rb > /srv/named.conf
 
-* $pwd has the generate\_named.rb script
-* generate\_named.rb script generates real named.conf file and dumps it back out to $pwd
+1. $pwd has the generate\_named.rb script
+2. generate\_named.rb script generates real named.conf file and dumps it back out to $pwd
 
 Then, build the image again.
 
@@ -392,43 +438,61 @@ This time the real named.conf is copied into the image, and it can be launched w
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
 
-Basic Concept: Docker as a build environment
+*Basic concept:*
 
-You're already doing this - esp. Developers.
+Docker as a build environment
+
+(You're already doing this - esp. Developers.)
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
+
+*Basic concept:*
+
+Docker as a build environment
+
+(You're already doing this - esp. Developers.)
 
 Docker is wonderful for building code and testing in a self-contained environment.
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
 
-Docker is wonderful for building code and testing in a self-contained environment.  But...
+*Basic concept:*
+
+Docker as a build environment
+
+You're already doing this - esp. Developers.
+
+Docker is wonderful for building code and testing in a self-contained environment.
+
+But...
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 402)
+
+__Build and Install__
 
 *What if it isn't self-contained?*
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
 
-Consider this:
+*Consider this:*
 
     FROM ubuntu:14.10
     MAINTAINER Chris Collins <collins.christopher@gmail.com>
@@ -449,112 +513,159 @@ Consider this:
     
     ["/bin/cp", "-r", "/dt", "/mnt"]
 
-Run with:
+*Run with:*
 
     docker run -v /usr/sbin:/mnt -it dwarf_therapist
 
-Question:  What did that do?
+---
+
+## Advanced Docker Wizardry (DKRWIZ 402)
+
+__Build and Install__
+
+*Question:*
+
+What did that do?
  
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
 
-Answer: Scary right?
+*Answer:*
+
+Scary right?
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
 
-Answer: But cool!
+*Answer:*
+
+But cool!
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
 
-Question: Guess who does this?
+*Question:*
+
+Guess who does this?
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 402)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
 
 __Build and Install__
 
-Answer: DOCKER!
+*Answer:*
 
-https://docs.docker.com/v1.5/contributing/devenvironment/
+DOCKER!
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 501)
-========================
+## Advanced Docker Wizardry (DKRWIZ 402)
+
+__Build and Install__
+
+*Answer:*
+
+DOCKER!
+
+The Docker folks have a pre-made development environment inside of a Docker image.
+
+The resulting Docker binary is dropped into a directory on the host system for use.
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 501)
 
 __Docker-ception!__
 
-Basic Concept:  Build a Docker image inside a Docker container
+*Basic concept:*
+
+Build a Docker image inside a Docker container
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 501)
-========================
+## Advanced Docker Wizardry (DKRWIZ 501)
 
 __Docker-ception!__
 
-Question: OH DEAR GOD WHY!?
+*Question:*
+
+OH DEAR GOD WHY!?
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 501)
-========================
+## Advanced Docker Wizardry (DKRWIZ 501)
 
 __Docker-ception!__
 
-Answer: Because I could.
+*Answer:*
+
+Because I could.
 
 (Non, Je ne regrette rien)
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 501)
-========================
+## Advanced Docker Wizardry (DKRWIZ 501)
 
 __Docker-ception!__
 
-The long Answer:
+*The long Answer:*
 
-Working with a Developer: 
+Working with a Developer - 
 
-* had static code that would live inside the image, from Github
-* had dynamic content that would live in mounted volumes, from users
-* Dev needed to rapidy build and deploy when needed
-* I wanted this to work on any server; did not want a registry involved
+1. had static code that would live inside the image, from Github
+2. had dynamic content that would live in mounted volumes, from users
+3. Dev needed to rapidly build and deploy when needed
+4. I wanted this to work on any server; did not want a registry involved
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 501)
-========================
+## Advanced Docker Wizardry (DKRWIZ 501)
 
 __Docker-ception!__
 
-Docker In Docker (by Jerome Petazzoni, surprise): https://github.com/jpetazzo/dind
+*How:*
 
-Modified like so:
+Docker *Inside* Docker (DIND)
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 501)
+
+__Docker-ception!__ (DIND)
+
+Docker *Inside* Docker
+
+...by, SURPRISE!, Jerome Petazzoni ('nsenter' fame, among other stuff)
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 501)
+
+__Docker-ception!__ (DIND)
+
+Docker *Inside* Docker
+
+...by, SURPRISE!, Jerome Petazzoni (nsenter fame, among other stuff)
+
+*Taken and modified like so:*
 
     FROM ubuntu:14.10
     MAINTAINER Chris Collins <christopher.collins@duke.edu>
     
     ENV TERM=xterm
     ENV DEBIAN_FRONTEND noninteractive
-    ENV PKGS docker curl apt-transport-https ca-certificates curl lxc iptables
+    ENV PKGS git docker curl apt-transport-https ca-certificates curl lxc iptables
     
     ADD . /srv
     RUN apt-get update -qq && apt-get install -qqy $PKGS \
@@ -580,34 +691,44 @@ Modified like so:
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 501)
-========================
+## Advanced Docker Wizardry (DKRWIZ 501)
 
 __Docker-ception!__
 
-And run: 
+*And run:*
 
     docker run --privileged -v ~/images:/tmp --rm -it docker_build
     
     root@885ad1955fbf:/build_it.sh
 
----
-
-Advanced Docker Wizardry (DKRWIZ 502)
-========================
-
-__Using Containers to Manage their Hosts__
-
-Basic Concept: Provide a container mountpoints and/or privileged access to manage its host
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 502)
-========================
+## Advanced Docker Wizardry (DKRWIZ 501)
+
+__Docker-ception!__
+
+1. runs Docker inside a container configured with build tools and Dev's code
+2. builds another image (the real image)
+3. `Docker save`'s it to the host disk for load
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 502)
 
 __Using Containers to Manage their Hosts__
 
-Consider this:
+*Basic concept:*
+
+Provide a container mount points and/or privileged access to manage its host
+
+---
+
+## Advanced Docker Wizardry (DKRWIZ 502)
+
+__Using Containers to Manage their Hosts__
+
+*Consider this:*
 
     docker run -it centos:centos7 sh -c "cat /proc/sys/vm/swappiness"
     60
@@ -615,63 +736,69 @@ Consider this:
 
 Swappiness of the host is adjusted inside a container.
 
-Question:  But why?
+*Question:*
+
+But why?
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 502)
-========================
+## Advanced Docker Wizardry (DKRWIZ 502)
 
 __Using Containers to Manage their Hosts__
 
-Answer: AUTOMATION! CLOUD, er STUFF!
+*Answer:*
 
-You don't have to have direct access to the host to manage it.
+AUTOMATION! THE CLOUD! And, ...stuff!
 
-* Cloud hosts w/Remote Docker API (--tlsverify, etc)
-* Hosts are throwaway, ephemeral
-* Need to make a change?  Fire up your Docker management tool (docker-compose, fig, etc) and do it!
+You don't need to have direct access to the host to manage it.
+
+1. cloud hosts w/remote Docker API (--tlsverify, etc)
+2. hosts are throwaway, ephemeral
+3. need to make a change?  Fire up your Docker management tool (docker-compose, fig, etc) and do it!
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 502)
-========================
+## Advanced Docker Wizardry (DKRWIZ 502)
 
 __Using Containers to Manage their Hosts__
 
-Consider this:
+*Consider this:*
 
     docker run --privileged -v /proc/mounts:/srv/mounts:ro -it centos:centos7 sh -c "cat /srv/mounts"
 
 The host's mount points are exposed to the container.
 
-Question: But why?
+*Question:*
+
+But why?
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 502)
-========================
+## Advanced Docker Wizardry (DKRWIZ 502)
 
 __Using Containers to Manage their Hosts__
 
-Answer: Remote monitoring!
+*Answer:*
 
-* Nagios
-* Cacti
-* Logstash Forwarder
-* Your own scripts
-* etc..
+Remote monitoring!
 
-Attach one to every host for instant monitoring/trending.
+1. Nagios
+2. Cacti
+3. Logstash Forwarder
+4. Your own scripts
+5. etc..
+
+Attach one to every host for instant monitoring/trending - no need to install or configure any packages on the host.
 
 ---
 
-Advanced Docker Wizardry (DKRWIZ 502)
-========================
+## Advanced Docker Wizardry (DKRWIZ 502)
 
 __Using Containers to Manage their Hosts__
 
-Example of this in the wild: Google CAdvisor (https://github.com/google/cadvisor)
+*Example of this in the wild:*
+
+Google CAdvisor (https://github.com/google/cadvisor)
 
 Monitors the host and container usage, and provides a web UI and API for extracting the data.
 
@@ -689,12 +816,15 @@ Monitors the host and container usage, and provides a web UI and API for extract
 
 ---
 
-Further Reading
-===============
+## Further Reading
 
 Containers as a Binary:
 
 * http://blog.xebia.com/2014/07/04/create-the-smallest-possible-docker-container/
+
+Docker Development Environment:
+
+* https://docs.docker.com/v1.5/contributing/devenvironment/
 
 Docker In Docker:
 
