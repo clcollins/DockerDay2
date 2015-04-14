@@ -92,7 +92,7 @@ Advanced Docker Wizardry (Earn Your Docker-ate Degree)
 Advanced Docker Wizardry (DKRWIZ 301)
 =======================
 
-## Docker Container as a Binary ##
+__Docker Container as a Binary__
 
 Basic concept: Small, Single-purpose Docker container used to accomplish one task on linked containers
 
